@@ -59,3 +59,5 @@ class Solution {
         return point[0] * point[0] + point[1] * point[1];
     }
 }
+
+// Time; O(nlog(n)) Space: O(n)

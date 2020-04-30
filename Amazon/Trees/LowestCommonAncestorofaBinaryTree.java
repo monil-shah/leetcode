@@ -37,21 +37,19 @@ p and q are different and both values will exist in the binary tree.*/
  * }
  */
 class Solution {
-    private TreeNode ans;
-    public Solution(){
-    this.ans = null;}
-    public boolean lca(TreeNode curr, TreeNode p, TreeNode q){
-        if(curr == null) return false;
-        int left = this.lca(curr.left,p,q)?1:0;
-        int right = this.lca(curr.right,p,q)?1:0;
-        int mid = (curr ==p || curr == q)?1:0;
-        if(left+mid+right>=2){
-            this.ans = curr;
-        }
-        return (mid+left+right>0);
-    }
+   TreeNode ans = null;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         lca(root,p,q);
-        return this.ans;
+        return ans;
+    }
+    public boolean lca(TreeNode node, TreeNode p, TreeNode q){
+        if(node == null) return false;
+        int leftcheck = (lca(node.left,p,q))?1:0;
+        int rightcheck = (lca(node.right,p,q))?1:0;
+        int mid = (node==p||node==q)?1:0;
+        if(leftcheck+rightcheck+mid>=2){
+            ans = node;
+        }
+        return (leftcheck+rightcheck+mid>0);
     }
 }
